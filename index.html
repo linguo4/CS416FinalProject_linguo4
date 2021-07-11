@@ -10,8 +10,8 @@
 <script>
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 2000 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 1800 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -39,7 +39,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .call(d3.axisBottom(x));
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0, 50])
+      .domain( [5, 40])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
