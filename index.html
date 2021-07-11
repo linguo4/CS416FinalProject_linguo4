@@ -48,10 +48,13 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
     var myColor = d3.scaleOrdinal()
       .domain(allGroup)
       .range(d3.schemeSet2);
-
+    
+    var mindate = new Date(2019,1,1),
+        maxdate = new Date(2021,6,26);
+            
     // Add X axis --> it is a date format
-    var x = d3.scaleLinear()
-      .domain([0,10])
+    var x = d3.time.scale()
+      .domain([mindate, maxdate])
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -59,7 +62,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,20])
+      .domain( [0,50])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
