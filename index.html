@@ -83,7 +83,7 @@ var line = svg
 function update(selectedGroup) {
 
   // Create new data with the selection?
-  var dataFilter = data.products.map(function(d){return {Date: d.Date, value:d[selectedGroup]} })
+  var dataFilter = data.map(function(d){return {Date: d.Date, value:d[selectedGroup]} })
 
   // Give these new data to update line
   line
