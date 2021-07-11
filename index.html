@@ -84,7 +84,7 @@ var data = d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {Date: d.Date, value:d[selectedGroup]} })
+      var dataFilter = data.products.map(function(d){return {Date: d.Date, value:d[selectedGroup]} })
 
       // Give these new data to update line
       line
