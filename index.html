@@ -23,10 +23,10 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/connectedscatter.csv",
+d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv",
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+    return { date : d3.timeParse("%m-%d-%Y")(d.Date), value : d.Stay_at_home_ratio_National }
   },
   // Now I can use this dataset:
   function(data) {
