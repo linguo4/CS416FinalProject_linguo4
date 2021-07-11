@@ -30,7 +30,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv", function(data) {
+var data = d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv")
 
     // List of groups (here I have one group per column)
     var allGroup = ["Stay_at_home_ratio_National", "Stay_at_home_ratio_IL", "Stay_at_home_ratio_Champaign"]
@@ -106,7 +106,6 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         update(selectedOption)
     })
 
-})
 
 
 </script>
