@@ -49,12 +49,10 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .domain(allGroup)
       .range(d3.schemeSet2);
     
-    var mindate = new Date(2019,1,1),
-        maxdate = new Date(2021,6,26);
             
     // Add X axis --> it is a date format
-    var x = d3.time.scale()
-      .domain([mindate, maxdate])
+    var x = scaleTime()
+      .domain(d3.extent(data, function(d) { return new Date(d.Date);}))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
