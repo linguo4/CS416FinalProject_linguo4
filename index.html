@@ -26,7 +26,7 @@ var svg = d3.select("#my_dataviz")
 d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv",
   // When reading the csv, I must format variables:
   function(d){
-    return { date : d3.timeParse("%m-%d-%Y")(d.Date), value : d.Stay_at_home_ratio_National }
+    return { date : d3.timeParse("%m/%d/%Y")(d.Date), value : d.Stay_at_home_ratio_National }
   },
   // Now I can use this dataset:
   function(data) {
