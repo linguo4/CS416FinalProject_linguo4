@@ -5,27 +5,22 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
   
 <!-- Add 3 buttons -->
-<button onclick="National Level">Dataset 1</button>
-<button onclick="State Level-IL">Dataset 2</button>
+<button onclick="update(data1)">National Level</button>
+<button onclick="update(data2)">State Level: IL</button>
+<button onclick="update(data3)">County Level: Champaign</button>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id="covid19_travel"></div>
   
 
 <script>
 
-// Create 2 datasets
-var data1 = [
-   {ser1: 0.3, ser2: 4},
-   {ser1: 2, ser2: 16},
-   {ser1: 3, ser2: 8}
-];
+// Load 3 datasets
+var data1 = d3.csv('https://github.com/linguo4/CS416FinalProject_linguo4/blob/main/Trips_by_Distance_National.csv');
 
-var data2 = [
-   {ser1: 1, ser2: 7},
-   {ser1: 4, ser2: 1},
-   {ser1: 6, ser2: 8}
-];
+var data2 = d3.csv('https://github.com/linguo4/CS416FinalProject_linguo4/blob/main/Trips_by_Distance_State.csv');
+
+var data3 = d3.csv('https://github.com/linguo4/CS416FinalProject_linguo4/blob/main/Trips_by_Distance_County.csv');
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 50},
@@ -33,7 +28,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 50},
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#covid19_travel")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -58,13 +53,13 @@ svg.append("g")
 function update(data) {
 
   // Create the X axis:
-  x.domain([0, d3.max(data, function(d) { return d.ser1 }) ]);
+  x.domain([0, d3.max(data, function(d) { return d.Date }) ]);
   svg.selectAll(".myXaxis").transition()
     .duration(3000)
     .call(xAxis);
 
   // create the Y axis
-  y.domain([0, d3.max(data, function(d) { return d.ser2  }) ]);
+  y.domain([0, d3.max(data, function(d) { return d.Population_Staying_at_Home/(d.Population_Staying_at_Home+d.Population_Not_Staying_at_Home)  }) ]);
   svg.selectAll(".myYaxis")
     .transition()
     .duration(3000)
@@ -72,7 +67,7 @@ function update(data) {
 
   // Create a update selection: bind to the new data
   var u = svg.selectAll(".lineTest")
-    .data([data], function(d){ return d.ser1 });
+    .data([data], function(d){ return d.Date });
 
   // Updata the line
   u
@@ -83,8 +78,8 @@ function update(data) {
     .transition()
     .duration(3000)
     .attr("d", d3.line()
-      .x(function(d) { return x(d.ser1); })
-      .y(function(d) { return y(d.ser2); }))
+      .x(function(d) { return x(d.Date); })
+      .y(function(d) { return y(d.Population_Staying_at_Home/(d.Population_Staying_at_Home+d.Population_Not_Staying_at_Home)); }))
       .attr("fill", "none")
       .attr("stroke", "steelblue")
       .attr("stroke-width", 2.5)
