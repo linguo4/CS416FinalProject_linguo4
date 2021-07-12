@@ -73,7 +73,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .y(function(d) { return y(d.valueA) })
         )
         .attr("stroke", "black")
-        .style("stroke-width", 4)
+        .style("stroke-width", 2)
         .style("fill", "none")
 
     // Initialize dots with group a
@@ -84,7 +84,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .append('circle')
         .attr("cx", function(d) { return x(d.date) })
         .attr("cy", function(d) { return y(d.valueA) })
-        .attr("r", 7)
+        .attr("r", 3)
         .style("fill", "#69b3a2")
 
 
