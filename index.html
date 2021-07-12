@@ -32,12 +32,12 @@ var svg = d3.select("#my_dataviz")
 
 //Read the data
 d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv", function(d){
-    return { date : d3.timeParse("%m/%d/%Y")(d.Date), valueA : d.Stay_at_home_ratio_National, valueB : d.Stay_at_home_ratio_IL, valueC : d.Stay_at_home_ratio_Champaign }
+    return { date : d3.timeParse("%m/%d/%Y")(d.Date), US : d.Stay_at_home_ratio_National, IL : d.Stay_at_home_ratio_IL, Champaign : d.Stay_at_home_ratio_Champaign }
   },
   function(data) {
     
     // List of groups (here I have one group per column)
-    var allGroup = ["US", "IL", "valueC"]
+    var allGroup = ["US", "IL", "Champaign"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -69,9 +69,8 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .curve(d3.curveBasis)
           .x(function(d) { return x(d.date) })
-          .y(function(d) { return y(d.valueA) })
+          .y(function(d) { return y(d.US) })
         )
         .attr("stroke", "black")
         .style("stroke-width", 2)
@@ -84,7 +83,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .enter()
       .append('circle')
         .attr("cx", function(d) { return x(d.date) })
-        .attr("cy", function(d) { return y(d.valueA) })
+        .attr("cy", function(d) { return y(d.US) })
         .attr("r", 5)
         .style("fill", "#69b3a2")
 
@@ -101,7 +100,6 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .curve(d3.curveBasis)
             .x(function(d) { return x(d.time) })
             .y(function(d) { return y(d.value) })
           )
