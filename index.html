@@ -101,7 +101,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       
       var mousemove = function(d) {
         Tooltip
-          .html("Staying at home percentage: " + if (d.value === undefined) {return d.US} else 	{ return d.value } + "%")
+          .html("Staying at home percentage: " + function(d){if (d.value === undefined) {return d.US} else 	{ return d.value };} + "%")
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
