@@ -7,6 +7,9 @@
 <!-- Initialize a select button -->
 <select id="selectButton"></select>
 
+<!-- Load d3-annotation -->
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
@@ -35,6 +38,9 @@ var svg = d3.select("#my_dataviz")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+
+  
+
 
 //Read the data
 d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv", function(d){
@@ -171,6 +177,44 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
     })
 
 })
+  
+const annotations1 = [
+  {
+    note: {
+      label: "From roughly this date, many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
+      title: "Start of Staying at home order."
+    },
+    x: 300,
+    y: 200,
+    dy: 500,
+    dx: 400
+  }
+]
 
+const annotations2 = [
+  {
+    note: {
+      label: "It's colder outside and people like to stay inside.",
+      title: "Winter is coming!"
+    },
+    x: 1000,
+    y: 1000,
+    dy: 1100,
+    dx: 1100
+  }
+]
+
+// Add annotation to the chart
+const makeAnnotations = d3.annotation()
+  .annotations(annotations1)
+d3.select("#my_dataviz")
+  .append("g")
+  .call(makeAnnotations)
+  
+const makeAnnotations = d3.annotation()
+  .annotations(annotations2)
+d3.select("#my_dataviz")
+  .append("g")
+  .call(makeAnnotations)
 
 </script>
