@@ -18,8 +18,8 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 100, bottom: 30, left: 30},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 1800 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -31,8 +31,10 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_connectedscatter.csv", function(data) {
-
+d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.csv", function(data) {
+    function(d){
+    return { date : d3.timeParse("%m/%d/%Y")(d.Date), valueA : d.Stay_at_home_ratio_National, valueB : d.Stay_at_home_ratio_IL, valueC : d.Stay_at_home_ratio_Champaign }
+  },
     // List of groups (here I have one group per column)
     var allGroup = ["valueA", "valueB", "valueC"]
 
@@ -46,8 +48,8 @@ d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/da
       .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
     // Add X axis --> it is a date format
-    var x = d3.scaleLinear()
-      .domain([0,10])
+    var x = d3.scaleTime()
+      .domain(d3.extent(data, function(d) { return d.date; }))
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -55,7 +57,7 @@ d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/da
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,20])
+      .domain( [15, 35])
       .range([ height, 0 ]);
     svg.append("g")
       .call(d3.axisLeft(y));
