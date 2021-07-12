@@ -205,16 +205,16 @@ const annotations2 = [
 ]
 
 // Add annotation to the chart
-const makeAnnotations = d3.annotation()
+const makeAnnotations1 = d3.annotation()
   .annotations(annotations1)
 d3.select("#my_dataviz")
   .append("g")
-  .call(makeAnnotations)
+  .call(makeAnnotations1)
   
-// const makeAnnotations = d3.annotation()
-//   .annotations(annotations2)
-// d3.select("#my_dataviz")
-//   .append("g")
-//   .call(makeAnnotations)
+const makeAnnotations2 = d3.annotation()
+  .annotations(annotations2)
+d3.select("#my_dataviz")
+  .append("g")
+  .call(makeAnnotations2)
 
 </script>
