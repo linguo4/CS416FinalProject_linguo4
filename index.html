@@ -95,7 +95,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       
       var mousemove = function(d) {
         Tooltip
-          .html("Exact value: " + d.US)
+          .html("Exact value: " + d.value)
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
