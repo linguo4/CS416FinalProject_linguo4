@@ -75,7 +75,37 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .attr("stroke", "black")
         .style("stroke-width", 2)
         .style("fill", "none")
+    
+    // create a tooltip
+    var Tooltip = d3.select("#my_dataviz")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "2px")
+      .style("border-radius", "5px")
+      .style("padding", "5px")
 
+      // Three function that change the tooltip when user hover / move / leave a cell
+      var mouseover = function(d) {
+        Tooltip
+          .style("opacity", 1)
+      }
+      
+      var mousemove = function(d) {
+        Tooltip
+          .html("Exact value: " d.US)
+          .style("left", (d3.mouse(this)[0]+70) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
+      }
+      
+      var mouseleave = function(d) {
+        Tooltip
+          .style("opacity", 0)
+      }
+      
+      
     // Initialize dots with group a
     var dot = svg
       .selectAll('circle')
@@ -86,6 +116,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .attr("cy", function(d) { return y(d.US) })
         .attr("r", 5)
         .style("fill", "#69b3a2")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
 
 
     // A function that update the chart
