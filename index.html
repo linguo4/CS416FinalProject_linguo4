@@ -37,7 +37,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
   function(data) {
     
     // List of groups (here I have one group per column)
-    var allGroup = ["valueA", "valueB", "valueC"]
+    var allGroup = ["US", "IL", "valueC"]
 
     // add the options to the button
     d3.select("#selectButton")
@@ -69,6 +69,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .append("path")
         .datum(data)
         .attr("d", d3.line()
+          .curve(d3.curveBasis)
           .x(function(d) { return x(d.date) })
           .y(function(d) { return y(d.valueA) })
         )
@@ -100,6 +101,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .transition()
           .duration(1000)
           .attr("d", d3.line()
+            .curve(d3.curveBasis)
             .x(function(d) { return x(d.time) })
             .y(function(d) { return y(d.value) })
           )
