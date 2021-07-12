@@ -95,7 +95,14 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       
       var mousemove = function(d) {
         Tooltip
-          .html("Date: " + d.date + "Staying at home percentage: " + d.US)
+          .html("Date: " + d.date + ";   Staying at home percentage: " + d.US + "%")
+          .style("left", (d3.mouse(this)[0]+70) + "px")
+          .style("top", (d3.mouse(this)[1]) + "px")
+      }
+      
+      var mousemove1 = function(d) {
+        Tooltip
+          .html("Date: " + d.date + ";   Staying at home percentage: " + d.value + "%")
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -142,6 +149,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .duration(1000)
           .attr("cx", function(d) { return x(d.time) })
           .attr("cy", function(d) { return y(d.value) })
+          .on("mouseover", mouseover)
+          .on("mousemove", mousemove1)
+          .on("mouseleave", mouseleave)
     }
 
     // When the button is changed, run the updateChart function
