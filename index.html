@@ -93,14 +93,14 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .style("opacity", 1)
       }
       
-      var mousemove = function(d) {
+      var mousemove0 = function(d) {
         Tooltip
           .html("Date: " + d.date + ";   Staying at home percentage: " + d.US + "%")
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
       
-      var mousemove1 = function(d) {
+      var mousemove = function(d) {
         Tooltip
           .html("Date: " + d.date + ";   Staying at home percentage: " + d.value + "%")
           .style("left", (d3.mouse(this)[0]+70) + "px")
@@ -124,7 +124,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .attr("r", 5)
         .style("fill", "#69b3a2")
         .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
+        .on("mousemove", mousemove0)
         .on("mouseleave", mouseleave)
 
 
@@ -150,7 +150,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .attr("cx", function(d) { return x(d.time) })
           .attr("cy", function(d) { return y(d.value) })
           .on("mouseover", mouseover)
-          .on("mousemove1", mousemove)
+          .on("mousemove", mousemove)
           .on("mouseleave", mouseleave)
     }
 
