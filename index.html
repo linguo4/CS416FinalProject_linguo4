@@ -198,25 +198,22 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
 
   
   const annotations2 = [
-  {
-    note: {
-      label: "It's colder outside and people like to stay inside.",
-      title: "Winter is coming!"
-    },
-    x: 1500,
-    y: 250,
-    dy: -50,
-    dx: 400
-  }
-]
+    {
+      note: {
+        label: "It's colder outside and people like to stay inside.",
+        title: "Winter is coming!"
+      },
+      x: 1500,
+      y: 250,
+      dy: -50,
+      dx: 400
+    }
+  ]
 
-
-  
-const makeAnnotations2 = d3.annotation()
-  .annotations(annotations2)
-d3.select("#my_dataviz")
-  .append("g")
-  .call(makeAnnotations2)
+  const makeAnnotations2 = d3.annotation()
+    .annotations(annotations2)
+  svg.append("g")
+    .call(makeAnnotations2)
 
 })
   
