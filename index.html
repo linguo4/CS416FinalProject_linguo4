@@ -175,46 +175,49 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         // run the updateChart function with this selected option
         update(selectedOption)
     })
+  
+  
+    const annotations1 = [
+    {
+      note: {
+        label: "From roughly this date, many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
+        title: "Start of Staying at home order."
+      },
+      x: 300,
+      y: 200,
+      dy: 500,
+      dx: 400
+    }
+  ]
+  // Add annotation to the chart
+  const makeAnnotations1 = d3.annotation()
+    .annotations(annotations1)
+  svg.append("g")
+    .call(makeAnnotations1)
+  
 
 })
   
-const annotations1 = [
-  {
-    note: {
-      label: "From roughly this date, many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
-      title: "Start of Staying at home order."
-    },
-    x: 300,
-    y: 200,
-    dy: 500,
-    dx: 400
-  }
-]
 
-const annotations2 = [
-  {
-    note: {
-      label: "It's colder outside and people like to stay inside.",
-      title: "Winter is coming!"
-    },
-    x: 1000,
-    y: 1000,
-    dy: 1100,
-    dx: 1100
-  }
-]
+// const annotations2 = [
+//   {
+//     note: {
+//       label: "It's colder outside and people like to stay inside.",
+//       title: "Winter is coming!"
+//     },
+//     x: 1000,
+//     y: 1000,
+//     dy: 1100,
+//     dx: 1100
+//   }
+// ]
 
-// Add annotation to the chart
-const makeAnnotations1 = d3.annotation()
-  .annotations(annotations1)
-d3.select("#my_dataviz")
-  .append("g")
-  .call(makeAnnotations1)
+
   
-const makeAnnotations2 = d3.annotation()
-  .annotations(annotations2)
-d3.select("#my_dataviz")
-  .append("g")
-  .call(makeAnnotations2)
+// const makeAnnotations2 = d3.annotation()
+//   .annotations(annotations2)
+// d3.select("#my_dataviz")
+//   .append("g")
+//   .call(makeAnnotations2)
 
 </script>
