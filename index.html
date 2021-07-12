@@ -100,15 +100,15 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .transition()
           .duration(1000)
           .attr("d", d3.line()
-            .x(function(d) { return x(+d.time) })
-            .y(function(d) { return y(+d.value) })
+            .x(function(d) { return x(d.time) })
+            .y(function(d) { return y(d.value) })
           )
       dot
         .data(dataFilter)
         .transition()
         .duration(1000)
-          .attr("cx", function(d) { return x(+d.time) })
-          .attr("cy", function(d) { return y(+d.value) })
+          .attr("cx", function(d) { return x(d.time) })
+          .attr("cy", function(d) { return y(d.value) })
     }
 
     // When the button is changed, run the updateChart function
