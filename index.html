@@ -69,7 +69,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .append("path")
         .datum(data)
         .attr("d", d3.line()
-          .x(function(d) { return x(d.time) })
+          .x(function(d) { return x(d.date) })
           .y(function(d) { return y(d.valueA) })
         )
         .attr("stroke", "black")
@@ -82,7 +82,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .data(data)
       .enter()
       .append('circle')
-        .attr("cx", function(d) { return x(d.time) })
+        .attr("cx", function(d) { return x(d.date) })
         .attr("cy", function(d) { return y(d.valueA) })
         .attr("r", 7)
         .style("fill", "#69b3a2")
@@ -92,7 +92,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
     function update(selectedGroup) {
 
       // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
+      var dataFilter = data.map(function(d){return {time: d.date, value:d[selectedGroup]} })
 
       // Give these new data to update line
       line
