@@ -13,6 +13,12 @@
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
+<!-- Circle are black when hovered-->
+<style>
+.myCircle:hover {
+  stroke: black;
+}
+</style>
 
 <script>
 
@@ -93,13 +99,6 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .style("opacity", 1)
       }
       
-      var mousemove0 = function(d) {
-        Tooltip
-          .html("Date: " + d.date + ";   Staying at home percentage: " + d.US + "%")
-          .style("left", (d3.mouse(this)[0]+70) + "px")
-          .style("top", (d3.mouse(this)[1]) + "px")
-      }
-      
       var mousemove = function(d) {
         Tooltip
           .html("Date: " + d.date + ";   Staying at home percentage: " + d.value + "%")
@@ -115,17 +114,21 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       
     // Initialize dots with group a
     var dot = svg
-      .selectAll('circle')
+      .append("g")
+      .selectAll('dot')
       .data(data)
       .enter()
       .append('circle')
+        .attr("class","myCircle")
         .attr("cx", function(d) { return x(d.date) })
         .attr("cy", function(d) { return y(d.US) })
         .attr("r", 5)
-        .style("fill", "#69b3a2")
-//         .on("mouseover", mouseover)
-//         .on("mousemove", mousemove0)
-//         .on("mouseleave", mouseleave)
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 3)
+        .attr("fill", "white")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
 
 
     // A function that update the chart
@@ -149,9 +152,6 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .duration(1000)
           .attr("cx", function(d) { return x(d.time) })
           .attr("cy", function(d) { return y(d.value) })
-          .on("mouseover", mouseover)
-          .on("mousemove", mousemove)
-          .on("mouseleave", mouseleave)
     }
 
     // When the button is changed, run the updateChart function
