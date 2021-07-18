@@ -114,7 +114,10 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       
       var mousemove = function(d) {
         Tooltip
-          .html("Staying at home percentage: " + d.value + "%")
+          .html(function(d) {
+            if (d[selectedGroup] = "US") {return d.US}
+            else 	{ return d.value }
+        ;})
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -165,9 +168,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .duration(1000)
           .attr("cx", function(d) { return x(d.time) })
           .attr("cy", function(d) { return y(d.value) })
-          .on("mouseover", mouseover)
-          .on("mousemove", mousemove)
-          .on("mouseleave", mouseleave)
+//           .on("mouseover", mouseover)
+//           .on("mousemove", mousemove)
+//           .on("mouseleave", mouseleave)
       }
   
   
