@@ -168,7 +168,10 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .on("mouseover", mouseover)
           .on("mousemove", mousemove)
           .on("mouseleave", mouseleave)
-      
+      }
+  
+  
+  
       const annotations1 = [
         {
           note: {
@@ -207,7 +210,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       svg.append("g")
         .call(makeAnnotations2)
       
-    }
+    
 
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
