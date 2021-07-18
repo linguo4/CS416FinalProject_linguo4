@@ -139,9 +139,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .attr("stroke", "#69b3a2")
         .attr("stroke-width", 3)
         .attr("fill", "white")
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
+//         .on("mouseover", mouseover)
+//         .on("mousemove", mousemove)
+//         .on("mouseleave", mouseleave)
 
 
     // A function that update the chart
@@ -165,6 +165,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .duration(1000)
           .attr("cx", function(d) { return x(d.time) })
           .attr("cy", function(d) { return y(d.value) })
+          .on("mouseover", mouseover)
+          .on("mousemove", mousemove)
+          .on("mouseleave", mouseleave)
       
       const annotations1 = [
         {
