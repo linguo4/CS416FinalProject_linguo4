@@ -166,6 +166,45 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           .attr("cx", function(d) { return x(d.time) })
           .attr("cy", function(d) { return y(d.value) })
           .on("mousemove", mousemove)
+      
+      const annotations1 = [
+        {
+          note: {
+            label: "Many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
+            title: "Staying at home order."
+          },
+          x: 850,
+          y: 250,
+          dy: -50,
+          dx: 100
+        }
+      ]
+      // Add annotation to the chart
+      const makeAnnotations1 = d3.annotation()
+        .annotations(annotations1)
+      svg.append("g")
+        .call(makeAnnotations1)
+  
+
+  
+      const annotations2 = [
+        {
+          note: {
+            label: "It's colder outside and people like to stay inside.",
+            title: "Winter is coming!"
+          },
+          x: 1250,
+          y: 250,
+          dy: -50,
+          dx: 180
+        }
+      ]
+
+      const makeAnnotations2 = d3.annotation()
+        .annotations(annotations2)
+      svg.append("g")
+        .call(makeAnnotations2)
+      
     }
 
     // When the button is changed, run the updateChart function
@@ -177,43 +216,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
     })
   
   
-    const annotations1 = [
-    {
-      note: {
-        label: "Many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
-        title: "Staying at home order."
-      },
-      x: 850,
-      y: 250,
-      dy: -50,
-      dx: 100
-    }
-  ]
-  // Add annotation to the chart
-  const makeAnnotations1 = d3.annotation()
-    .annotations(annotations1)
-  svg.append("g")
-    .call(makeAnnotations1)
-  
-
-  
-  const annotations2 = [
-    {
-      note: {
-        label: "It's colder outside and people like to stay inside.",
-        title: "Winter is coming!"
-      },
-      x: 1250,
-      y: 250,
-      dy: -50,
-      dx: 180
-    }
-  ]
-
-  const makeAnnotations2 = d3.annotation()
-    .annotations(annotations2)
-  svg.append("g")
-    .call(makeAnnotations2)
+    
 
 })
   
