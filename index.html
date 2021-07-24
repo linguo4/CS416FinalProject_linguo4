@@ -67,6 +67,12 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
+    svg.append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+      .text("Date");
 
     // Add Y axis
     var y = d3.scaleLinear()
