@@ -205,7 +205,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
     const annotations1 = [
         {
           note: {
-            label: "Many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
+            label: "IL published start of staying at home order.",
             title: "Staying at home order."
           },
           x: 850,
@@ -222,11 +222,37 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       const annotations2 = [
         {
           note: {
-            label: "It's colder outside and people like to stay inside.",
+            label: "It's colder outside for IL and more people like to stay inside than national average.",
             title: "Winter is coming!"
           },
           x: 1250,
           y: 250,
+          dy: -50,
+          dx: 180
+        }
+      ]
+      
+      const annotations3 = [
+        {
+          note: {
+            label: "Champaign's percentage is going down while US's and IL's are going up and keeping steady afterwards.",
+            title: "Still going down!"
+          },
+          x: 1350,
+          y: 150,
+          dy: -50,
+          dx: 180
+        }
+      ]
+      
+      const annotations4 = [
+        {
+          note: {
+            label: "Start of COVID-19 in US.",
+            title: "Warning!"
+          },
+          x: 850,
+          y: 150,
           dy: -50,
           dx: 180
         }
@@ -237,6 +263,13 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
   
   makeAnnotations2 = d3.annotation()
         .annotations(annotations2)
+  makeAnnotations3 = d3.annotation()
+        .annotations(annotations3)
+  
+  makeAnnotations4 = d3.annotation()
+        .annotations(annotations4)
+  svg.append("g")
+          .call(makeAnnotations4)
   
     // A function that update the chart
     function update(selectedGroup) {
@@ -265,11 +298,13 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       
       if (selectedGroup='IL'){  
         svg.append("g")
+        .call(makeAnnotations1)
+        svg.append("g")
           .call(makeAnnotations2)
       }
-      if (selectedGroup='US'){    
-      svg.append("g")
-        .call(makeAnnotations1)
+      if (selectedGroup='Champaign'){    
+        svg.append("g")
+          .call(makeAnnotations3)
       }
       }
   
