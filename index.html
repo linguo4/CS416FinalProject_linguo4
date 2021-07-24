@@ -232,7 +232,11 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         }
       ]
   
+  makeAnnotations1 = d3.annotation()
+        .annotations(annotations1)
   
+  makeAnnotations2 = d3.annotation()
+        .annotations(annotations2)
   
     // A function that update the chart
     function update(selectedGroup) {
@@ -259,17 +263,11 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
 //           .on("mousemove", mousemove)
 //           .on("mouseleave", mouseleave)
       
-      if (selectedGroup='IL'){
-        makeAnnotations1.update()
-        makeAnnotations2 = d3.annotation()
-        .annotations(annotations2)
+      if (selectedGroup='IL'){  
         svg.append("g")
           .call(makeAnnotations2)
       }
-      if (selectedGroup='US'){
-        makeAnnotations2.update()
-        makeAnnotations1 = d3.annotation()
-        .annotations(annotations1)
+      if (selectedGroup='US'){    
       svg.append("g")
         .call(makeAnnotations1)
       }
