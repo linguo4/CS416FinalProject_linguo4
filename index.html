@@ -171,8 +171,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         Tooltip
           .style("opacity", 0)
       }
-      
-      
+     
+  
+  
     // Initialize dots with group a
     var dot = svg
       .append("g")
@@ -190,37 +191,18 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
+    
+//     var text = svg.append("text")
+//       .attr("x", 0 - margin.left)             
+//       .attr("y", 10 - (margin.top / 2))
+//       .attr("text-anchor", "start")  
+//       .style("font-size", "16px");
 
-
-    // A function that update the chart
-    function update(selectedGroup) {
-
-      // Create new data with the selection?
-      var dataFilter = data.map(function(d){return {time: d.date, value:d[selectedGroup]} })
-
-      // Give these new data to update line
-      line
-          .datum(dataFilter)
-          .transition()
-          .duration(1000)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.time) })
-            .y(function(d) { return y(d.value) })
-          )
-      dot
-        .data(dataFilter)
-        .transition()
-        .duration(1000)
-          .attr("cx", function(d) { return x(d.time) })
-          .attr("cy", function(d) { return y(d.value) })
-//           .on("mouseover", mouseover)
-//           .on("mousemove", mousemove)
-//           .on("mouseleave", mouseleave)
-      }
-  
-  
-  
-      const annotations1 = [
+    
+    
+    
+    
+    const annotations1 = [
         {
           note: {
             label: "Many states published start of staying at home order, lasting 1-2 months. More people stay at home.",
@@ -253,10 +235,45 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         }
       ]
 
-      const makeAnnotations2 = d3.annotation()
-        .annotations(annotations2)
-      svg.append("g")
-        .call(makeAnnotations2)
+      
+  
+  
+  
+    // A function that update the chart
+    function update(selectedGroup) {
+
+      // Create new data with the selection?
+      var dataFilter = data.map(function(d){return {time: d.date, value:d[selectedGroup]} })
+
+      // Give these new data to update line
+      line
+          .datum(dataFilter)
+          .transition()
+          .duration(1000)
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.time) })
+            .y(function(d) { return y(d.value) })
+          )
+      dot
+        .data(dataFilter)
+        .transition()
+        .duration(1000)
+          .attr("cx", function(d) { return x(d.time) })
+          .attr("cy", function(d) { return y(d.value) })
+//           .on("mouseover", mouseover)
+//           .on("mousemove", mousemove)
+//           .on("mouseleave", mouseleave)
+      
+      if (selectedGroup='IL'){
+        const makeAnnotations2 = d3.annotation()
+          .annotations(annotations2)
+        svg.append("g")
+          .call(makeAnnotations2)
+      }
+      
+      }
+  
+  
       
     
 
