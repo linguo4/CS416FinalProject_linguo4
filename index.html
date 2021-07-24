@@ -235,7 +235,8 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         }
       ]
 
-      
+      makeAnnotations2 = d3.annotation()
+          .annotations(annotations2)
   
   
   
@@ -265,8 +266,6 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
 //           .on("mouseleave", mouseleave)
       
       if (selectedGroup='IL'){
-        const makeAnnotations2 = d3.annotation()
-          .annotations(annotations2)
         svg.append("g")
           .call(makeAnnotations2)
       }
