@@ -89,6 +89,15 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
       .style("text-anchor", "middle")
       .text("Percentage(%) of people staying at home");
   
+  
+    svg.append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .style("text-decoration", "underline")  
+        .text("Percent of people staying at home vs Time Graph");
+  
     // Initialize line with group a
     var line = svg
       .append('g')
