@@ -251,10 +251,10 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
             label: "Start of COVID-19 in US.",
             title: "Warning!"
           },
-          x: 650,
+          x: 700,
           y: 500,
           dy: -50,
-          dx: 180
+          dx: 160
         }
       ]
   
@@ -301,7 +301,7 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .call(makeAnnotations1)
         svg.append("g")
           .call(makeAnnotations2)
-      }else if(selectedGroup='Champaign'){    
+      }else if (selectedGroup='Champaign'){    
         svg.append("g")
           .call(makeAnnotations3)
       }
