@@ -239,9 +239,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
             title: "Still going down!"
           },
           x: 1250,
-          y: 500,
-          dy: -50,
-          dx: 180
+          y: 250,
+          dy: -100,
+          dx: 0
         }
       ]
       
@@ -254,21 +254,21 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
           x: 700,
           y: 500,
           dy: -50,
-          dx: 160
+          dx: 200
         }
       ]
   
-  makeAnnotations1 = d3.annotation()
-        .annotations(annotations1)
+    const makeAnnotations1 = d3.annotation()
+          .annotations(annotations1)
   
-  makeAnnotations2 = d3.annotation()
-        .annotations(annotations2)
-  makeAnnotations3 = d3.annotation()
-        .annotations(annotations3)
+    const makeAnnotations2 = d3.annotation()
+          .annotations(annotations2)
+    const makeAnnotations3 = d3.annotation()
+          .annotations(annotations3)
   
-  makeAnnotations4 = d3.annotation()
-        .annotations(annotations4)
-  svg.append("g")
+    const makeAnnotations4 = d3.annotation()
+          .annotations(annotations4)
+        svg.append("g")
           .call(makeAnnotations4)
   
     // A function that update the chart
@@ -301,7 +301,9 @@ d3.csv("https://linguo4.github.io/CS416FinalProject_linguo4/Trips_by_Distance.cs
         .call(makeAnnotations1)
         svg.append("g")
           .call(makeAnnotations2)
-      }else if (selectedGroup='Champaign'){    
+      }
+      
+      if (selectedGroup='Champaign'){    
         svg.append("g")
           .call(makeAnnotations3)
       }
