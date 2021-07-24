@@ -23,8 +23,11 @@
 }
 </style>
 
-<script>
+<p>First paragraph</p>
+<p>Second paragraph</p>
 
+<script>
+d3.select("body").append("p");
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 100, bottom: 30, left: 50},
     width = 1800 - margin.left - margin.right,
